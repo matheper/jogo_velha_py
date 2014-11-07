@@ -8,12 +8,10 @@ tabuleiro =[
 
 def desenhaTabuleiro():
     for linha in tabuleiro:
-        for valor in linha:
-            print(valor + "\t", end="")
-        print("\n")
+        print(linha)
 
 
-def lerJogada():
+def jogar(jogador):
     jogadaValida = False
     while not jogadaValida:
         linha = int(input('Digite linha para jogada:'))
@@ -28,7 +26,7 @@ def lerJogada():
                 print("Coluna Inválida!")
         else:
             print("Linha Inválida!")
-    return (linha, coluna)
+    tabuleiro[linha][coluna] = jogador
 
 
 def verificaVencedor():
@@ -70,8 +68,7 @@ def main():
         else:
             jogador = "O"
 
-        linha, coluna = lerJogada()
-        tabuleiro[linha][coluna] = jogador
+        jogar(jogador)
         ganhador = verificaVencedor()
         desenhaTabuleiro()
 
